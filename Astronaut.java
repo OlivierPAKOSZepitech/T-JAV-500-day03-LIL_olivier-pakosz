@@ -1,3 +1,6 @@
+import chocolate.*;
+import planet.*;
+
 public class Astronaut {
     private static int nextId = 0;
     private int id;
@@ -31,9 +34,9 @@ public class Astronaut {
     }
 
     public static void main(String[] args) {
-        Astronaut mutta = new Astronaut("Mutta");
-        Astronaut hibito = new Astronaut("Hibito");
-        System.out.println(mutta.getId());
-        System.out.println(hibito.getId());
+        chocolate.Mars snack = new chocolate.Mars();
+        planet.Mars rock = new planet.Mars("Viking 1");
+        System.out.println(snack.getId());
+        System.out.println(rock.getLandingSite());
     }
 }
