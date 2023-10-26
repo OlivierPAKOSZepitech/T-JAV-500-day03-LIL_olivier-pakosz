@@ -1,20 +1,41 @@
-import chocolate.*;
-import planet.*;
+import planet.moon.Phobos;
 
 public class Astronaut {
-    private static int nextId = 0;
-    private int id;
+
+    private static int count = 0;
+    private int id = count++;
     private String name;
-    private int snacks;
-    private String destination;
+    private int snacks = 0;
+    private String destination = null;
 
     public Astronaut(String name) {
-        this.id = nextId;
         this.name = name;
-        this.snacks = 0;
-        this.destination = null;
-        nextId++;
         System.out.println(name + " ready for launch!");
+    }
+
+    public void doActions() {
+        System.out.println(name + ": Nothing to do.");
+        if(this.destination == null){
+            System.out.println(name + ": I may have done nothing, but I have " + this.snacks + " Mars to eat at least!");
+        }
+    }
+
+    public void doActions(planet.Mars planet) {
+        System.out.println(name+ ": Started a mission!");
+        this.destination = planet.getLandingSite();
+    }
+
+    public void doActions(chocolate.Mars chocolate) {
+        this.snacks++;
+        System.out.println(name + ": Thanks for this mars number " + chocolate.getId());
+        if(this.destination == null){
+            System.out.println(name + ": I may have done nothing, but I have " + this.snacks + " Mars to eat at least!");
+        }
+    }
+
+    public void doActions(Phobos phobos){
+        System.out.println(name + ": Started a mission!");
+        this.destination = phobos.getLandingSite();
     }
 
     public int getId() {
@@ -29,28 +50,12 @@ public class Astronaut {
         return snacks;
     }
 
+    public static int getCount() {
+        return count;
+    }
+
     public String getDestination() {
         return destination;
     }
 
-    public void doActions() {
-        System.out.println(this.name + ": Nothing to do.");
-        if (this.destination == null) {
-            System.out.println(this.name + ": I may have done nothing, but I have " + this.snacks + " Mars to eat at least!");
-        }
-    }
-
-    public void doActions(planet.Mars mars) {
-        System.out.println(this.name + ": Started a mission.");
-        this.destination = mars.getLandingSite();
-    }
-
-    public void doActions(chocolate.Mars mars) {
-        this.snacks ++;
-        System.out.println(this.name + ": Thanks for this Mars number " + mars.getId());
-        if (this.destination == null) {
-            System.out.println(this.name + ": I may have done nothing, but I have " + this.snacks + " Mars to eat at least!");
-        }
-        
-    }
 }
